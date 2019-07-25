@@ -1,3 +1,5 @@
+.DS_Store
+mariadb/*
 assets/*
 !assets/.gitignore
 protected/runtime/*
