@@ -2,11 +2,11 @@ version: '3'
 
 services:
   nginx:
-    image: nginx:1.14
+    image: nginx:${NGINX_VER}
     container_name:
-      app_nginx
+      ${APP}_nginx
     ports:
-      - 7500:80
+      - ${NGINX_PORT}:80
     volumes:
       - ../app:/usr/share/nginx/html
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
@@ -18,26 +18,26 @@ services:
   php:
     build:
       ./php
-    image: php2:xdebug-ready
+    image: php7:xdebug-ready
     container_name:
-      app_php
+      ${APP}_php
     volumes:
       - ../app:/usr/share/nginx/html
     depends_on:
       - mariadb
     environment:
       XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1"
-      PHP_IDE_CONFIG: "serverName=PHP2"
+      PHP_IDE_CONFIG: "serverName=${APP}"
     networks:
       - internal
 
   mariadb:
-    image: mariadb:10.3
+    image: mariadb:${MARIA_VER}
     restart: always
     container_name:
-      app_db
+      ${APP}_db
     ports:
-      - 3333:3306
+      - ${MARIA_PORT}:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
@@ -50,9 +50,9 @@ services:
     links:
       - mariadb:db
     container_name:
-      app_pma
+      ${APP}_pma
     ports:
-      - 8765:80
+      - ${PMA_PORT}:80
     environment:
       MYSQL_ROOT_PASSWORD: root
     depends_on:
@@ -66,4 +66,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 192.168.210.0/28
+        - subnet: ${SUBNET}
