@@ -18,7 +18,7 @@ services:
   php:
     build:
       ./php
-    image: php7:xdebug-ready
+    image: php7_custom:0.3.0
     container_name:
       ${APP}_php
     volumes:
