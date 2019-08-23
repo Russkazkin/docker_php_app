@@ -23,6 +23,7 @@ services:
       ${APP}_php
     volumes:
       - ../../app/mywebdev/app:/usr/share/nginx/html
+    working_dir: /usr/share/nginx/html
     depends_on:
       - mariadb
     environment:
