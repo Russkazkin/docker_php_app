@@ -18,12 +18,11 @@ services:
   php:
     build:
       ./php
-    image: php7_custom:0.3.0
+    image: php7_custom:0.3.5
     container_name:
       ${APP}_php
     volumes:
       - ../../app/mywebdev/app:/usr/share/nginx/html
-    working_dir: /usr/share/nginx/html
     depends_on:
       - mariadb
     environment:
