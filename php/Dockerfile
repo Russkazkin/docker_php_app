@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y wget git unzip imagemagick libmagickwan
     && docker-php-ext-enable xdebug imagick intl
 
 ADD ./php.ini /usr/local/etc/php/php.ini
-ADD ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
