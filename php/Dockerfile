@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 MAINTAINER Rus Skazkin <ruslan@skazkin.su>
 RUN apt-get update && apt-get install -y wget git unzip imagemagick libmagickwand-dev zlib1g-dev libicu-dev g++ \
