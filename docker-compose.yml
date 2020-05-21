@@ -27,6 +27,7 @@ services:
       - mariadb
     environment:
       PHP_IDE_CONFIG: "serverName=${APP}"
+      XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1 remote_autostart=off remote_port=9001"
     networks:
       - internal
 
